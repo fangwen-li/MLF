@@ -11,16 +11,16 @@
 ## Lectures:
 * __01__ (2.18 Tue): Course overview ([Syllabus](#syllabus)), Python, Github, Etc.
 * __02__ (2.21 Fri): __HSBC Guest Lecture [1/4]__ Model management cycle in banking industry, Tool setup (GCP/Ali Cloud).
-* __03__ (2.25 Tue): Python crash course ([Basic](py/PythonCrashCourse_Derek_Banas.ipynb) | [Numpy](py/PythonCrashCourse_Numpy.ipynb)) | 
-Intro ([Slides](files/MLF_Intro.pdf), Reading: __PML__ Ch. 1)
-* __04__ (2.28 Fri): Regression ([Slides](files/MLF_Regression.pdf))
-* __05__ (3.03 Tue): __PML__ Ch. 2 (Perceptron, Adaline, Gradient descent, SGD), Regression weight update ([Slides](files/MLF_Regression.pdf))
-* __06__ (3.06 Fri): Logistic Regression ([Slides](files/MLF_Regression.pdf), Reading: __PML__ Ch. 3) 
-* __07__ (3.10 Tue): SVM/KNN/Decision Tree ([Slides](files/MLF_SVM_KNN_Tree.pdf), Reading: __PML__ Ch. 3) 
-* __08__ (3.13 Fri):
-* __09__ (3.17 Tue):
+* __03__ (2.25 Tue): Brief Python crash course ([Basic](py/PythonCrashCourse_Derek_Banas.ipynb) | [Numpy](py/PythonCrashCourse_Numpy.ipynb), Notebook Shorcut Keys) | 
+Intro ([Slides](files/MLF_Intro.pdf), Reading: __PML__ Ch. 1) | Notations, Regression ([Slides](files/MLF_Regression.pdf))
+* __04__ (2.28 Fri): Regression weight update ([Slides](files/MLF_Regression.pdf)) __PML__ Ch. 2 (Perceptron, Adaline, Gradient descent, SGD), 
+* __05__ (3.03 Tue): Logistic Regression ([Slides](files/MLF_Regression.pdf), Reading: __PML__ Ch. 3) 
+* __06__ (3.06 Fri): LR (continued) | SVM ([Slides](files/MLF_SVM_KNN_Tree.pdf), Reading: __PML__ Ch. 3) 
+* __07__ (3.10 Tue): KNN and Decision Tree ([Slides](files/MLF_SVM_KNN_Tree.pdf), Reading: __PML__ Ch. 3) 
+* __08__ (3.13 Fri): Data Preprocessing (Rading: __PML__ Ch. 4), SVD/PCA ([Slides](MLF_SVD_PCA_LDA.pdf), Reading: __PML__ Ch. 5)
+* __09__ (3.17 Tue): LDA ([Slides](MLF_SVD_PCA_LDA.pdf), Reading: __PML__ Ch. 5), Hyperparameters ([Slides](files/MLF_Bias_Variance_Metric.pdf), Reading: __PML__ Ch. 6)
 * __10__ (3.20 Fri): __HSBC Guest Lecture [2/4]__ Data mining, profiling, visualization, and conclusion. 
-* __11__ (3.24 Tue):
+* __11__ (3.24 Tue): Bias-Variance, Cross-validation ([Slides](files/MLF_Bias_Variance_Metric.pdf), Reading: __PML__ Ch. 6)
 * __12__ (3.27 Fri): __HSBC Guest Lecture [3/4]__ Model sharings.
 * __13__ (3.31 Tue):
 * __14__ (4.03 Fri): __HSBC Guest Lecture [4/4]__ Practical issues of applying ML to the real world.
@@ -64,7 +64,25 @@ Intro ([Slides](files/MLF_Intro.pdf), Reading: __PML__ Ch. 1)
   * Install [Anaconda](https://www.anaconda.com/download/) Python distribution (__3.X version__, not 2.X version). Anaconda distribution is core Python + useful scientific computation libraries (e.g., numpy, scipy, pandas) + package management system (pip or conda)
   * Install [PyCharm](https://www.jetbrains.com/pycharm/) Community version. (Or Professional version after applying for [free student license](https://www.jetbrains.com/student/))
   * Save the screenshot of (1) Github Desktop (showing 2 repositories) (2) Jupyter Notebook (Anaconda) (3) PyCharm (See my [example](https://github.com/jaehyukchoi/PHBS_MLF_2019/tree/master/HW0)) and make sure to press __`Push Origin`__ to sync with the online repository in github.com.
-
+* ### __Set 1: [Playing with Pandas dataframe]__ [Due by 3.11 Wed]
+  * The goal of this HW is to be familiar with `pandas` package and dataframe. Due to limited time, I cannot cover pandas in class. You need to teach yourself. Remenber that there's many answers to do the task I am asking below. Use your own way.
+  * For this HW, we will use [Polish companies bankruptcy data Data Set](http://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data) from UCI Machine Learning Repository. Download the dataset and put the 4th year file (`4year.arff`) in your `YOUR_GITHUB_ID/PHBS_MLF_2019/HW1/`
+  * I did a basic process of the data (loading to dataframe and creating `bankruptcy` column). See my [github](https://github.com/jaehyukchoi/PHBS_MLF_2019/tree/master/HW1/)
+  * We are going to use the following 4 features:
+  `X1 net profit / total assets`, `X2 total liabilities / total assets`, `X7 EBIT / total assets`, `X10 equity / total assets`, and `class`
+  * Create a new dataframe with only 4 feataures (and and `Bankruptcy`). Properly rename the columns to `X1`, `X2`, `X7`, and `X10`
+  * Fill-in the missing values `na` with the mean. (See Ch 4 of `PML`)
+  * Find the mean and std of the 4 features among all, bankrupt and still-operating companies (3 groups).
+  * How many companies satisfy the condition, `X1 < mean(X1) - stdev(X1)` __AND__ `X10 < mean(X10) - std(X10)`?
+  * What is the ratio of the bankrupted companies among the sub-groups above?
+* ### __Set 2: [Classifiers]__ [Due by 3.19 Thurs]
+  * The goal of this HW is to be familiar with the basic classifiers __PML__ Ch 3. 
+  * For this HW, we continue to use [Polish companies bankruptcy data Data Set](http://archive.ics.uci.edu/ml/datasets/Polish+companies+bankruptcy+data) from UCI Machine Learning Repository. Download the dataset and put the 4th year file (`4year.arff`) in your `YOUR_GITHUB_ID/PHBS_MLF_2019/HW2/`
+  * I did a basic process of the data (loading to dataframe, creating `bankruptcy` column, changing column names, filling-in `na` values, training-vs-test split, standardizatino, etc). See my [github](https://github.com/jaehyukchoi/PHBS_MLF_2019/tree/master/HW1/Classifiers.ipynb)
+  * Select the 2 most important features using LogisticRegression with L1 penalty. (Adjust C until you see 2 features)
+  * Using the 2 selected features, apply LR / SVM / decision tree. Try your own hyperparameters (C, gamma, tree depth, etc) to maximize the prediction accuracy. (Just try several values. You don't need to show your answer is the maximum.)
+  * Visualize your classifiers using the `plot_decision_regions` function from __PML__ Ch. 3
+ 
 ## Course Project
 * Previous Years: [2018](past-years/2018.M1/Project.md)
 <!--
